@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateHistoriaClinicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_idHistoriaClinica}" for="idHistoriaClinica" />
+                    <h:inputText id="idHistoriaClinica" value="#{historiaClinicaController.selected.idHistoriaClinica}" title="#{b.CreateHistoriaClinicaTitle_idHistoriaClinica}" required="true" requiredMessage="#{b.CreateHistoriaClinicaRequiredMessage_idHistoriaClinica}"/>
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_anotacion}" for="anotacion" />
+                    <h:inputText id="anotacion" value="#{historiaClinicaController.selected.anotacion}" title="#{b.CreateHistoriaClinicaTitle_anotacion}" />
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{historiaClinicaController.selected.descripcion}" title="#{b.CreateHistoriaClinicaTitle_descripcion}" />
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{historiaClinicaController.selected.fecha}" title="#{b.CreateHistoriaClinicaTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_idTipoServicio}" for="idTipoServicio" />
+                    <h:selectOneMenu id="idTipoServicio" value="#{historiaClinicaController.selected.idTipoServicio}" title="#{b.CreateHistoriaClinicaTitle_idTipoServicio}" >
+                        <f:selectItems value="#{tipoServicioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.CreateHistoriaClinicaLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota" value="#{historiaClinicaController.selected.idMascota}" title="#{b.CreateHistoriaClinicaTitle_idMascota}" >
+                        <f:selectItems value="#{mascotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{historiaClinicaController.create}" value="#{b.CreateHistoriaClinicaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{historiaClinicaController.prepareList}" value="#{b.CreateHistoriaClinicaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateHistoriaClinicaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

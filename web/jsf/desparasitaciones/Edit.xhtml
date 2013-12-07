@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditDesparasitacionesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditDesparasitacionesLabel_idDesparasitaciones}" for="idDesparasitaciones" />
+                    <h:inputText id="idDesparasitaciones" value="#{desparasitacionesController.selected.idDesparasitaciones}" title="#{b.EditDesparasitacionesTitle_idDesparasitaciones}" required="true" requiredMessage="#{b.EditDesparasitacionesRequiredMessage_idDesparasitaciones}"/>
+                    <h:outputLabel value="#{b.EditDesparasitacionesLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{desparasitacionesController.selected.fecha}" title="#{b.EditDesparasitacionesTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.EditDesparasitacionesLabel_medicamento}" for="medicamento" />
+                    <h:inputText id="medicamento" value="#{desparasitacionesController.selected.medicamento}" title="#{b.EditDesparasitacionesTitle_medicamento}" />
+                    <h:outputLabel value="#{b.EditDesparasitacionesLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota" value="#{desparasitacionesController.selected.idMascota}" title="#{b.EditDesparasitacionesTitle_idMascota}" >
+                        <f:selectItems value="#{mascotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{desparasitacionesController.update}" value="#{b.EditDesparasitacionesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditDesparasitacionesViewLink}"/>
+                <br />
+                <h:commandLink action="#{desparasitacionesController.prepareList}" value="#{b.EditDesparasitacionesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditDesparasitacionesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

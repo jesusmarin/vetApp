@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditConstantesFisiologicasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:inputText id="idConstantesFisiologicas" value="#{constantesFisiologicasController.selected.idConstantesFisiologicas}" title="#{b.EditConstantesFisiologicasTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.EditConstantesFisiologicasRequiredMessage_idConstantesFisiologicas}"/>
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{constantesFisiologicasController.selected.peso}" title="#{b.EditConstantesFisiologicasTitle_peso}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_temperatura}" for="temperatura" />
+                    <h:inputText id="temperatura" value="#{constantesFisiologicasController.selected.temperatura}" title="#{b.EditConstantesFisiologicasTitle_temperatura}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_turgenciaPiel}" for="turgenciaPiel" />
+                    <h:inputText id="turgenciaPiel" value="#{constantesFisiologicasController.selected.turgenciaPiel}" title="#{b.EditConstantesFisiologicasTitle_turgenciaPiel}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_pulso}" for="pulso" />
+                    <h:inputText id="pulso" value="#{constantesFisiologicasController.selected.pulso}" title="#{b.EditConstantesFisiologicasTitle_pulso}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_frecuenciaCardicaco}" for="frecuenciaCardicaco" />
+                    <h:inputText id="frecuenciaCardicaco" value="#{constantesFisiologicasController.selected.frecuenciaCardicaco}" title="#{b.EditConstantesFisiologicasTitle_frecuenciaCardicaco}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_frecuenciaRes}" for="frecuenciaRes" />
+                    <h:inputText id="frecuenciaRes" value="#{constantesFisiologicasController.selected.frecuenciaRes}" title="#{b.EditConstantesFisiologicasTitle_frecuenciaRes}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_tllc}" for="tllc" />
+                    <h:inputText id="tllc" value="#{constantesFisiologicasController.selected.tllc}" title="#{b.EditConstantesFisiologicasTitle_tllc}" />
+                    <h:outputLabel value="#{b.EditConstantesFisiologicasLabel_idCita}" for="idCita" />
+                    <h:selectOneMenu id="idCita" value="#{constantesFisiologicasController.selected.idCita}" title="#{b.EditConstantesFisiologicasTitle_idCita}" >
+                        <f:selectItems value="#{citaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{constantesFisiologicasController.update}" value="#{b.EditConstantesFisiologicasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditConstantesFisiologicasViewLink}"/>
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.prepareList}" value="#{b.EditConstantesFisiologicasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditConstantesFisiologicasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

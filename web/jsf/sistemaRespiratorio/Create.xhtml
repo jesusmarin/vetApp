@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateSistemaRespiratorioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateSistemaRespiratorioLabel_idSistemasRespiratorio}" for="idSistemasRespiratorio" />
+                    <h:inputText id="idSistemasRespiratorio" value="#{sistemaRespiratorioController.selected.idSistemasRespiratorio}" title="#{b.CreateSistemaRespiratorioTitle_idSistemasRespiratorio}" required="true" requiredMessage="#{b.CreateSistemaRespiratorioRequiredMessage_idSistemasRespiratorio}"/>
+                    <h:outputLabel value="#{b.CreateSistemaRespiratorioLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{sistemaRespiratorioController.selected.valor}" title="#{b.CreateSistemaRespiratorioTitle_valor}" />
+                    <h:outputLabel value="#{b.CreateSistemaRespiratorioLabel_observaciones}" for="observaciones" />
+                    <h:inputTextarea rows="4" cols="30" id="observaciones" value="#{sistemaRespiratorioController.selected.observaciones}" title="#{b.CreateSistemaRespiratorioTitle_observaciones}" />
+                    <h:outputLabel value="#{b.CreateSistemaRespiratorioLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{sistemaRespiratorioController.selected.idConstantesFisiologicas}" title="#{b.CreateSistemaRespiratorioTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.CreateSistemaRespiratorioRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sistemaRespiratorioController.create}" value="#{b.CreateSistemaRespiratorioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sistemaRespiratorioController.prepareList}" value="#{b.CreateSistemaRespiratorioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateSistemaRespiratorioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

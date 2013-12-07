@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditSistemaCardioVascularTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditSistemaCardioVascularLabel_idSistemasCardiovascular}" for="idSistemasCardiovascular" />
+                    <h:inputText id="idSistemasCardiovascular" value="#{sistemaCardioVascularController.selected.idSistemasCardiovascular}" title="#{b.EditSistemaCardioVascularTitle_idSistemasCardiovascular}" required="true" requiredMessage="#{b.EditSistemaCardioVascularRequiredMessage_idSistemasCardiovascular}"/>
+                    <h:outputLabel value="#{b.EditSistemaCardioVascularLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{sistemaCardioVascularController.selected.valor}" title="#{b.EditSistemaCardioVascularTitle_valor}" />
+                    <h:outputLabel value="#{b.EditSistemaCardioVascularLabel_observaciones}" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{sistemaCardioVascularController.selected.observaciones}" title="#{b.EditSistemaCardioVascularTitle_observaciones}" />
+                    <h:outputLabel value="#{b.EditSistemaCardioVascularLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{sistemaCardioVascularController.selected.idConstantesFisiologicas}" title="#{b.EditSistemaCardioVascularTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.EditSistemaCardioVascularRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{sistemaCardioVascularController.update}" value="#{b.EditSistemaCardioVascularSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditSistemaCardioVascularViewLink}"/>
+                <br />
+                <h:commandLink action="#{sistemaCardioVascularController.prepareList}" value="#{b.EditSistemaCardioVascularShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditSistemaCardioVascularIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateTipoVacunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateTipoVacunaLabel_idTipoVacuna}" for="idTipoVacuna" />
+                    <h:inputText id="idTipoVacuna" value="#{tipoVacunaController.selected.idTipoVacuna}" title="#{b.CreateTipoVacunaTitle_idTipoVacuna}" required="true" requiredMessage="#{b.CreateTipoVacunaRequiredMessage_idTipoVacuna}"/>
+                    <h:outputLabel value="#{b.CreateTipoVacunaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tipoVacunaController.selected.nombre}" title="#{b.CreateTipoVacunaTitle_nombre}" />
+                    <h:outputLabel value="#{b.CreateTipoVacunaLabel_idEspecie}" for="idEspecie" />
+                    <h:selectOneMenu id="idEspecie" value="#{tipoVacunaController.selected.idEspecie}" title="#{b.CreateTipoVacunaTitle_idEspecie}" >
+                        <f:selectItems value="#{especieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoVacunaController.create}" value="#{b.CreateTipoVacunaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoVacunaController.prepareList}" value="#{b.CreateTipoVacunaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateTipoVacunaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

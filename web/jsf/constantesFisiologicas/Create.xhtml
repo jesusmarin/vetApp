@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateConstantesFisiologicasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:inputText id="idConstantesFisiologicas" value="#{constantesFisiologicasController.selected.idConstantesFisiologicas}" title="#{b.CreateConstantesFisiologicasTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.CreateConstantesFisiologicasRequiredMessage_idConstantesFisiologicas}"/>
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{constantesFisiologicasController.selected.peso}" title="#{b.CreateConstantesFisiologicasTitle_peso}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_temperatura}" for="temperatura" />
+                    <h:inputText id="temperatura" value="#{constantesFisiologicasController.selected.temperatura}" title="#{b.CreateConstantesFisiologicasTitle_temperatura}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_turgenciaPiel}" for="turgenciaPiel" />
+                    <h:inputText id="turgenciaPiel" value="#{constantesFisiologicasController.selected.turgenciaPiel}" title="#{b.CreateConstantesFisiologicasTitle_turgenciaPiel}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_pulso}" for="pulso" />
+                    <h:inputText id="pulso" value="#{constantesFisiologicasController.selected.pulso}" title="#{b.CreateConstantesFisiologicasTitle_pulso}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_frecuenciaCardicaco}" for="frecuenciaCardicaco" />
+                    <h:inputText id="frecuenciaCardicaco" value="#{constantesFisiologicasController.selected.frecuenciaCardicaco}" title="#{b.CreateConstantesFisiologicasTitle_frecuenciaCardicaco}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_frecuenciaRes}" for="frecuenciaRes" />
+                    <h:inputText id="frecuenciaRes" value="#{constantesFisiologicasController.selected.frecuenciaRes}" title="#{b.CreateConstantesFisiologicasTitle_frecuenciaRes}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_tllc}" for="tllc" />
+                    <h:inputText id="tllc" value="#{constantesFisiologicasController.selected.tllc}" title="#{b.CreateConstantesFisiologicasTitle_tllc}" />
+                    <h:outputLabel value="#{b.CreateConstantesFisiologicasLabel_idCita}" for="idCita" />
+                    <h:selectOneMenu id="idCita" value="#{constantesFisiologicasController.selected.idCita}" title="#{b.CreateConstantesFisiologicasTitle_idCita}" >
+                        <f:selectItems value="#{citaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.create}" value="#{b.CreateConstantesFisiologicasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.prepareList}" value="#{b.CreateConstantesFisiologicasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateConstantesFisiologicasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateMascotaLabel_idMascota}" for="idMascota" />
+                    <h:inputText id="idMascota" value="#{mascotaController.selected.idMascota}" title="#{b.CreateMascotaTitle_idMascota}" required="true" requiredMessage="#{b.CreateMascotaRequiredMessage_idMascota}"/>
+                    <h:outputLabel value="#{b.CreateMascotaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{mascotaController.selected.fechaNacimiento}" title="#{b.CreateMascotaTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.CreateMascotaLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{mascotaController.selected.peso}" title="#{b.CreateMascotaTitle_peso}" />
+                    <h:outputLabel value="#{b.CreateMascotaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{b.CreateMascotaTitle_nombre}" />
+                    <h:outputLabel value="#{b.CreateMascotaLabel_sexo}" for="sexo" />
+                    <h:inputText id="sexo" value="#{mascotaController.selected.sexo}" title="#{b.CreateMascotaTitle_sexo}" />
+                    <h:outputLabel value="#{b.CreateMascotaLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{mascotaController.selected.color}" title="#{b.CreateMascotaTitle_color}" />
+                    <h:outputLabel value="#{b.CreateMascotaLabel_caracteristicas}" for="caracteristicas" />
+                    <h:inputText id="caracteristicas" value="#{mascotaController.selected.caracteristicas}" title="#{b.CreateMascotaTitle_caracteristicas}" />
+                    <h:outputLabel value="#{b.CreateMascotaLabel_idTipoProcedencia}" for="idTipoProcedencia" />
+                    <h:selectOneMenu id="idTipoProcedencia" value="#{mascotaController.selected.idTipoProcedencia}" title="#{b.CreateMascotaTitle_idTipoProcedencia}" >
+                        <f:selectItems value="#{tipoProcedenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.CreateMascotaLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{mascotaController.selected.idUsuario}" title="#{b.CreateMascotaTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.CreateMascotaLabel_idRaza}" for="idRaza" />
+                    <h:selectOneMenu id="idRaza" value="#{mascotaController.selected.idRaza}" title="#{b.CreateMascotaTitle_idRaza}" >
+                        <f:selectItems value="#{razaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mascotaController.create}" value="#{b.CreateMascotaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mascotaController.prepareList}" value="#{b.CreateMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateMascotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

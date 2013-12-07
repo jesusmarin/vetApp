@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewMascotaLabel_idMascota}"/>
+                    <h:outputText value="#{mascotaController.selected.idMascota}" title="#{b.ViewMascotaTitle_idMascota}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_fechaNacimiento}"/>
+                    <h:outputText value="#{mascotaController.selected.fechaNacimiento}" title="#{b.ViewMascotaTitle_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{b.ViewMascotaLabel_peso}"/>
+                    <h:outputText value="#{mascotaController.selected.peso}" title="#{b.ViewMascotaTitle_peso}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_nombre}"/>
+                    <h:outputText value="#{mascotaController.selected.nombre}" title="#{b.ViewMascotaTitle_nombre}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_sexo}"/>
+                    <h:outputText value="#{mascotaController.selected.sexo}" title="#{b.ViewMascotaTitle_sexo}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_color}"/>
+                    <h:outputText value="#{mascotaController.selected.color}" title="#{b.ViewMascotaTitle_color}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_caracteristicas}"/>
+                    <h:outputText value="#{mascotaController.selected.caracteristicas}" title="#{b.ViewMascotaTitle_caracteristicas}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_idTipoProcedencia}"/>
+                    <h:outputText value="#{mascotaController.selected.idTipoProcedencia}" title="#{b.ViewMascotaTitle_idTipoProcedencia}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_idUsuario}"/>
+                    <h:outputText value="#{mascotaController.selected.idUsuario}" title="#{b.ViewMascotaTitle_idUsuario}"/>
+                    <h:outputText value="#{b.ViewMascotaLabel_idRaza}"/>
+                    <h:outputText value="#{mascotaController.selected.idRaza}" title="#{b.ViewMascotaTitle_idRaza}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mascotaController.destroyAndView}" value="#{b.ViewMascotaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewMascotaEditLink}"/>
+                <br />
+                <h:commandLink action="#{mascotaController.prepareCreate}" value="#{b.ViewMascotaCreateLink}" />
+                <br />
+                <h:commandLink action="#{mascotaController.prepareList}" value="#{b.ViewMascotaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewMascotaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

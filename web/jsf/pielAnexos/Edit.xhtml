@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditPielAnexosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditPielAnexosLabel_idPielAnexos}" for="idPielAnexos" />
+                    <h:inputText id="idPielAnexos" value="#{pielAnexosController.selected.idPielAnexos}" title="#{b.EditPielAnexosTitle_idPielAnexos}" required="true" requiredMessage="#{b.EditPielAnexosRequiredMessage_idPielAnexos}"/>
+                    <h:outputLabel value="#{b.EditPielAnexosLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{pielAnexosController.selected.valor}" title="#{b.EditPielAnexosTitle_valor}" />
+                    <h:outputLabel value="#{b.EditPielAnexosLabel_observacion}" for="observacion" />
+                    <h:inputTextarea rows="4" cols="30" id="observacion" value="#{pielAnexosController.selected.observacion}" title="#{b.EditPielAnexosTitle_observacion}" />
+                    <h:outputLabel value="#{b.EditPielAnexosLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{pielAnexosController.selected.idConstantesFisiologicas}" title="#{b.EditPielAnexosTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.EditPielAnexosRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pielAnexosController.update}" value="#{b.EditPielAnexosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditPielAnexosViewLink}"/>
+                <br />
+                <h:commandLink action="#{pielAnexosController.prepareList}" value="#{b.EditPielAnexosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditPielAnexosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

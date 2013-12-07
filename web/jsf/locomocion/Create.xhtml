@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateLocomocionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateLocomocionLabel_idLocomocion}" for="idLocomocion" />
+                    <h:inputText id="idLocomocion" value="#{locomocionController.selected.idLocomocion}" title="#{b.CreateLocomocionTitle_idLocomocion}" required="true" requiredMessage="#{b.CreateLocomocionRequiredMessage_idLocomocion}"/>
+                    <h:outputLabel value="#{b.CreateLocomocionLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{locomocionController.selected.valor}" title="#{b.CreateLocomocionTitle_valor}" />
+                    <h:outputLabel value="#{b.CreateLocomocionLabel_observacion}" for="observacion" />
+                    <h:inputTextarea rows="4" cols="30" id="observacion" value="#{locomocionController.selected.observacion}" title="#{b.CreateLocomocionTitle_observacion}" />
+                    <h:outputLabel value="#{b.CreateLocomocionLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{locomocionController.selected.idConstantesFisiologicas}" title="#{b.CreateLocomocionTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.CreateLocomocionRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{locomocionController.create}" value="#{b.CreateLocomocionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{locomocionController.prepareList}" value="#{b.CreateLocomocionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateLocomocionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

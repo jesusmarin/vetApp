@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListSistemaCardioVascularTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListSistemaCardioVascularEmpty}" rendered="#{sistemaCardioVascularController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sistemaCardioVascularController.items.rowCount > 0}">
+                    <h:outputText value="#{sistemaCardioVascularController.pagination.pageFirstItem + 1}..#{sistemaCardioVascularController.pagination.pageLastItem + 1}/#{sistemaCardioVascularController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sistemaCardioVascularController.previous}" value="#{b.Previous} #{sistemaCardioVascularController.pagination.pageSize}" rendered="#{sistemaCardioVascularController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sistemaCardioVascularController.next}" value="#{b.Next} #{sistemaCardioVascularController.pagination.pageSize}" rendered="#{sistemaCardioVascularController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sistemaCardioVascularController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListSistemaCardioVascularTitle_idSistemasCardiovascular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSistemasCardiovascular}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListSistemaCardioVascularTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListSistemaCardioVascularTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListSistemaCardioVascularTitle_idConstantesFisiologicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConstantesFisiologicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sistemaCardioVascularController.prepareView}" value="#{b.ListSistemaCardioVascularViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sistemaCardioVascularController.prepareEdit}" value="#{b.ListSistemaCardioVascularEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sistemaCardioVascularController.destroy}" value="#{b.ListSistemaCardioVascularDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sistemaCardioVascularController.prepareCreate}" value="#{b.ListSistemaCardioVascularCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListSistemaCardioVascularIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

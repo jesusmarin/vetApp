@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditVacunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditVacunaLabel_idVacuna}" for="idVacuna" />
+                    <h:inputText id="idVacuna" value="#{vacunaController.selected.idVacuna}" title="#{b.EditVacunaTitle_idVacuna}" required="true" requiredMessage="#{b.EditVacunaRequiredMessage_idVacuna}"/>
+                    <h:outputLabel value="#{b.EditVacunaLabel_vacunaUtilizada}" for="vacunaUtilizada" />
+                    <h:inputText id="vacunaUtilizada" value="#{vacunaController.selected.vacunaUtilizada}" title="#{b.EditVacunaTitle_vacunaUtilizada}" />
+                    <h:outputLabel value="#{b.EditVacunaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{vacunaController.selected.fecha}" title="#{b.EditVacunaTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.EditVacunaLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota" value="#{vacunaController.selected.idMascota}" title="#{b.EditVacunaTitle_idMascota}" >
+                        <f:selectItems value="#{mascotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.EditVacunaLabel_idTipoVacuna}" for="idTipoVacuna" />
+                    <h:selectOneMenu id="idTipoVacuna" value="#{vacunaController.selected.idTipoVacuna}" title="#{b.EditVacunaTitle_idTipoVacuna}" >
+                        <f:selectItems value="#{tipoVacunaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{vacunaController.update}" value="#{b.EditVacunaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditVacunaViewLink}"/>
+                <br />
+                <h:commandLink action="#{vacunaController.prepareList}" value="#{b.EditVacunaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditVacunaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListMusculoEsqueleticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListMusculoEsqueleticoEmpty}" rendered="#{musculoEsqueleticoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{musculoEsqueleticoController.items.rowCount > 0}">
+                    <h:outputText value="#{musculoEsqueleticoController.pagination.pageFirstItem + 1}..#{musculoEsqueleticoController.pagination.pageLastItem + 1}/#{musculoEsqueleticoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{musculoEsqueleticoController.previous}" value="#{b.Previous} #{musculoEsqueleticoController.pagination.pageSize}" rendered="#{musculoEsqueleticoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{musculoEsqueleticoController.next}" value="#{b.Next} #{musculoEsqueleticoController.pagination.pageSize}" rendered="#{musculoEsqueleticoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{musculoEsqueleticoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMusculoEsqueleticoTitle_idMusculoEsqueletico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMusculoEsqueletico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMusculoEsqueleticoTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMusculoEsqueleticoTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMusculoEsqueleticoTitle_idConstantesFisiologicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConstantesFisiologicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{musculoEsqueleticoController.prepareView}" value="#{b.ListMusculoEsqueleticoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{musculoEsqueleticoController.prepareEdit}" value="#{b.ListMusculoEsqueleticoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{musculoEsqueleticoController.destroy}" value="#{b.ListMusculoEsqueleticoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{musculoEsqueleticoController.prepareCreate}" value="#{b.ListMusculoEsqueleticoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListMusculoEsqueleticoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

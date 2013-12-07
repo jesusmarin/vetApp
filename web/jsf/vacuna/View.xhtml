@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewVacunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewVacunaLabel_idVacuna}"/>
+                    <h:outputText value="#{vacunaController.selected.idVacuna}" title="#{b.ViewVacunaTitle_idVacuna}"/>
+                    <h:outputText value="#{b.ViewVacunaLabel_vacunaUtilizada}"/>
+                    <h:outputText value="#{vacunaController.selected.vacunaUtilizada}" title="#{b.ViewVacunaTitle_vacunaUtilizada}"/>
+                    <h:outputText value="#{b.ViewVacunaLabel_fecha}"/>
+                    <h:outputText value="#{vacunaController.selected.fecha}" title="#{b.ViewVacunaTitle_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{b.ViewVacunaLabel_idMascota}"/>
+                    <h:outputText value="#{vacunaController.selected.idMascota}" title="#{b.ViewVacunaTitle_idMascota}"/>
+                    <h:outputText value="#{b.ViewVacunaLabel_idTipoVacuna}"/>
+                    <h:outputText value="#{vacunaController.selected.idTipoVacuna}" title="#{b.ViewVacunaTitle_idTipoVacuna}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vacunaController.destroyAndView}" value="#{b.ViewVacunaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewVacunaEditLink}"/>
+                <br />
+                <h:commandLink action="#{vacunaController.prepareCreate}" value="#{b.ViewVacunaCreateLink}" />
+                <br />
+                <h:commandLink action="#{vacunaController.prepareList}" value="#{b.ViewVacunaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewVacunaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
