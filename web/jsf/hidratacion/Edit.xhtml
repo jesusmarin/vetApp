@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditHidratacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditHidratacionLabel_idHidratacion}" for="idHidratacion" />
+                    <h:inputText id="idHidratacion" value="#{hidratacionController.selected.idHidratacion}" title="#{b.EditHidratacionTitle_idHidratacion}" required="true" requiredMessage="#{b.EditHidratacionRequiredMessage_idHidratacion}"/>
+                    <h:outputLabel value="#{b.EditHidratacionLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{hidratacionController.selected.valor}" title="#{b.EditHidratacionTitle_valor}" />
+                    <h:outputLabel value="#{b.EditHidratacionLabel_observacion}" for="observacion" />
+                    <h:inputTextarea rows="4" cols="30" id="observacion" value="#{hidratacionController.selected.observacion}" title="#{b.EditHidratacionTitle_observacion}" />
+                    <h:outputLabel value="#{b.EditHidratacionLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{hidratacionController.selected.idConstantesFisiologicas}" title="#{b.EditHidratacionTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.EditHidratacionRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{hidratacionController.update}" value="#{b.EditHidratacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditHidratacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{hidratacionController.prepareList}" value="#{b.EditHidratacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditHidratacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewProductoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewProductoLabel_idProducto}"/>
+                    <h:outputText value="#{productoController.selected.idProducto}" title="#{b.ViewProductoTitle_idProducto}"/>
+                    <h:outputText value="#{b.ViewProductoLabel_nombre}"/>
+                    <h:outputText value="#{productoController.selected.nombre}" title="#{b.ViewProductoTitle_nombre}"/>
+                    <h:outputText value="#{b.ViewProductoLabel_sku}"/>
+                    <h:outputText value="#{productoController.selected.sku}" title="#{b.ViewProductoTitle_sku}"/>
+                    <h:outputText value="#{b.ViewProductoLabel_idMascota}"/>
+                    <h:outputText value="#{productoController.selected.idMascota}" title="#{b.ViewProductoTitle_idMascota}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productoController.destroyAndView}" value="#{b.ViewProductoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewProductoEditLink}"/>
+                <br />
+                <h:commandLink action="#{productoController.prepareCreate}" value="#{b.ViewProductoCreateLink}" />
+                <br />
+                <h:commandLink action="#{productoController.prepareList}" value="#{b.ViewProductoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewProductoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListCondicionCorporalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListCondicionCorporalEmpty}" rendered="#{condicionCorporalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{condicionCorporalController.items.rowCount > 0}">
+                    <h:outputText value="#{condicionCorporalController.pagination.pageFirstItem + 1}..#{condicionCorporalController.pagination.pageLastItem + 1}/#{condicionCorporalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{condicionCorporalController.previous}" value="#{b.Previous} #{condicionCorporalController.pagination.pageSize}" rendered="#{condicionCorporalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{condicionCorporalController.next}" value="#{b.Next} #{condicionCorporalController.pagination.pageSize}" rendered="#{condicionCorporalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{condicionCorporalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListCondicionCorporalTitle_idcondicionCorporal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcondicionCorporal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListCondicionCorporalTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListCondicionCorporalTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListCondicionCorporalTitle_idConstantesFisiologicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConstantesFisiologicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{condicionCorporalController.prepareView}" value="#{b.ListCondicionCorporalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{condicionCorporalController.prepareEdit}" value="#{b.ListCondicionCorporalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{condicionCorporalController.destroy}" value="#{b.ListCondicionCorporalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{condicionCorporalController.prepareCreate}" value="#{b.ListCondicionCorporalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListCondicionCorporalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

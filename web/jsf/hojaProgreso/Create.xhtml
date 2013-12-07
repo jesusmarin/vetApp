@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateHojaProgresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateHojaProgresoLabel_idHojaProgreso}" for="idHojaProgreso" />
+                    <h:inputText id="idHojaProgreso" value="#{hojaProgresoController.selected.idHojaProgreso}" title="#{b.CreateHojaProgresoTitle_idHojaProgreso}" required="true" requiredMessage="#{b.CreateHojaProgresoRequiredMessage_idHojaProgreso}"/>
+                    <h:outputLabel value="#{b.CreateHojaProgresoLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{hojaProgresoController.selected.fecha}" title="#{b.CreateHojaProgresoTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.CreateHojaProgresoLabel_informe}" for="informe" />
+                    <h:inputTextarea rows="4" cols="30" id="informe" value="#{hojaProgresoController.selected.informe}" title="#{b.CreateHojaProgresoTitle_informe}" />
+                    <h:outputLabel value="#{b.CreateHojaProgresoLabel_idCita}" for="idCita" />
+                    <h:selectOneMenu id="idCita" value="#{hojaProgresoController.selected.idCita}" title="#{b.CreateHojaProgresoTitle_idCita}" >
+                        <f:selectItems value="#{citaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hojaProgresoController.create}" value="#{b.CreateHojaProgresoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{hojaProgresoController.prepareList}" value="#{b.CreateHojaProgresoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateHojaProgresoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewRazaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewRazaLabel_idRaza}"/>
+                    <h:outputText value="#{razaController.selected.idRaza}" title="#{b.ViewRazaTitle_idRaza}"/>
+                    <h:outputText value="#{b.ViewRazaLabel_nombre}"/>
+                    <h:outputText value="#{razaController.selected.nombre}" title="#{b.ViewRazaTitle_nombre}"/>
+                    <h:outputText value="#{b.ViewRazaLabel_idEspecie}"/>
+                    <h:outputText value="#{razaController.selected.idEspecie}" title="#{b.ViewRazaTitle_idEspecie}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{razaController.destroyAndView}" value="#{b.ViewRazaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewRazaEditLink}"/>
+                <br />
+                <h:commandLink action="#{razaController.prepareCreate}" value="#{b.ViewRazaCreateLink}" />
+                <br />
+                <h:commandLink action="#{razaController.prepareList}" value="#{b.ViewRazaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewRazaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

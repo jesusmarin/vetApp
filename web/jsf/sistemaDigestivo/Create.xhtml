@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateSistemaDigestivoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateSistemaDigestivoLabel_idSistemaDigestivo}" for="idSistemaDigestivo" />
+                    <h:inputText id="idSistemaDigestivo" value="#{sistemaDigestivoController.selected.idSistemaDigestivo}" title="#{b.CreateSistemaDigestivoTitle_idSistemaDigestivo}" required="true" requiredMessage="#{b.CreateSistemaDigestivoRequiredMessage_idSistemaDigestivo}"/>
+                    <h:outputLabel value="#{b.CreateSistemaDigestivoLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{sistemaDigestivoController.selected.valor}" title="#{b.CreateSistemaDigestivoTitle_valor}" />
+                    <h:outputLabel value="#{b.CreateSistemaDigestivoLabel_observaciones}" for="observaciones" />
+                    <h:inputTextarea rows="4" cols="30" id="observaciones" value="#{sistemaDigestivoController.selected.observaciones}" title="#{b.CreateSistemaDigestivoTitle_observaciones}" />
+                    <h:outputLabel value="#{b.CreateSistemaDigestivoLabel_idConstantesFisiologicas}" for="idConstantesFisiologicas" />
+                    <h:selectOneMenu id="idConstantesFisiologicas" value="#{sistemaDigestivoController.selected.idConstantesFisiologicas}" title="#{b.CreateSistemaDigestivoTitle_idConstantesFisiologicas}" required="true" requiredMessage="#{b.CreateSistemaDigestivoRequiredMessage_idConstantesFisiologicas}">
+                        <f:selectItems value="#{constantesFisiologicasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sistemaDigestivoController.create}" value="#{b.CreateSistemaDigestivoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sistemaDigestivoController.prepareList}" value="#{b.CreateSistemaDigestivoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateSistemaDigestivoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListConstantesFisiologicasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListConstantesFisiologicasEmpty}" rendered="#{constantesFisiologicasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{constantesFisiologicasController.items.rowCount > 0}">
+                    <h:outputText value="#{constantesFisiologicasController.pagination.pageFirstItem + 1}..#{constantesFisiologicasController.pagination.pageLastItem + 1}/#{constantesFisiologicasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{constantesFisiologicasController.previous}" value="#{b.Previous} #{constantesFisiologicasController.pagination.pageSize}" rendered="#{constantesFisiologicasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{constantesFisiologicasController.next}" value="#{b.Next} #{constantesFisiologicasController.pagination.pageSize}" rendered="#{constantesFisiologicasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{constantesFisiologicasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_idConstantesFisiologicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConstantesFisiologicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_peso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_temperatura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temperatura}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_turgenciaPiel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.turgenciaPiel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_pulso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pulso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_frecuenciaCardicaco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.frecuenciaCardicaco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_frecuenciaRes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.frecuenciaRes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_tllc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tllc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListConstantesFisiologicasTitle_idCita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCita}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{constantesFisiologicasController.prepareView}" value="#{b.ListConstantesFisiologicasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{constantesFisiologicasController.prepareEdit}" value="#{b.ListConstantesFisiologicasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{constantesFisiologicasController.destroy}" value="#{b.ListConstantesFisiologicasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.prepareCreate}" value="#{b.ListConstantesFisiologicasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListConstantesFisiologicasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

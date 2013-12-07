@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewReporteProblemasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewReporteProblemasLabel_idReporteProblemas}"/>
+                    <h:outputText value="#{reporteProblemasController.selected.idReporteProblemas}" title="#{b.ViewReporteProblemasTitle_idReporteProblemas}"/>
+                    <h:outputText value="#{b.ViewReporteProblemasLabel_problema}"/>
+                    <h:outputText value="#{reporteProblemasController.selected.problema}" title="#{b.ViewReporteProblemasTitle_problema}"/>
+                    <h:outputText value="#{b.ViewReporteProblemasLabel_planDiagnostico}"/>
+                    <h:outputText value="#{reporteProblemasController.selected.planDiagnostico}" title="#{b.ViewReporteProblemasTitle_planDiagnostico}"/>
+                    <h:outputText value="#{b.ViewReporteProblemasLabel_resultado}"/>
+                    <h:outputText value="#{reporteProblemasController.selected.resultado}" title="#{b.ViewReporteProblemasTitle_resultado}"/>
+                    <h:outputText value="#{b.ViewReporteProblemasLabel_idHistoriaClinica}"/>
+                    <h:outputText value="#{reporteProblemasController.selected.idHistoriaClinica}" title="#{b.ViewReporteProblemasTitle_idHistoriaClinica}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reporteProblemasController.destroyAndView}" value="#{b.ViewReporteProblemasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewReporteProblemasEditLink}"/>
+                <br />
+                <h:commandLink action="#{reporteProblemasController.prepareCreate}" value="#{b.ViewReporteProblemasCreateLink}" />
+                <br />
+                <h:commandLink action="#{reporteProblemasController.prepareList}" value="#{b.ViewReporteProblemasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewReporteProblemasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

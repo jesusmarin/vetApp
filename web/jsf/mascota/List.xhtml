@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListMascotaEmpty}" rendered="#{mascotaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mascotaController.items.rowCount > 0}">
+                    <h:outputText value="#{mascotaController.pagination.pageFirstItem + 1}..#{mascotaController.pagination.pageLastItem + 1}/#{mascotaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mascotaController.previous}" value="#{b.Previous} #{mascotaController.pagination.pageSize}" rendered="#{mascotaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mascotaController.next}" value="#{b.Next} #{mascotaController.pagination.pageSize}" rendered="#{mascotaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mascotaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_idMascota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMascota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_fechaNacimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaNacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_peso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_sexo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_color}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.color}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_caracteristicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.caracteristicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_idTipoProcedencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoProcedencia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListMascotaTitle_idRaza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRaza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mascotaController.prepareView}" value="#{b.ListMascotaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mascotaController.prepareEdit}" value="#{b.ListMascotaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mascotaController.destroy}" value="#{b.ListMascotaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mascotaController.prepareCreate}" value="#{b.ListMascotaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListMascotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

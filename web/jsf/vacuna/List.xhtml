@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListVacunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListVacunaEmpty}" rendered="#{vacunaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{vacunaController.items.rowCount > 0}">
+                    <h:outputText value="#{vacunaController.pagination.pageFirstItem + 1}..#{vacunaController.pagination.pageLastItem + 1}/#{vacunaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{vacunaController.previous}" value="#{b.Previous} #{vacunaController.pagination.pageSize}" rendered="#{vacunaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{vacunaController.next}" value="#{b.Next} #{vacunaController.pagination.pageSize}" rendered="#{vacunaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{vacunaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListVacunaTitle_idVacuna}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVacuna}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListVacunaTitle_vacunaUtilizada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vacunaUtilizada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListVacunaTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListVacunaTitle_idMascota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMascota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListVacunaTitle_idTipoVacuna}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoVacuna}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{vacunaController.prepareView}" value="#{b.ListVacunaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vacunaController.prepareEdit}" value="#{b.ListVacunaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vacunaController.destroy}" value="#{b.ListVacunaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{vacunaController.prepareCreate}" value="#{b.ListVacunaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListVacunaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

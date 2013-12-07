@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewActitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewActitudLabel_idActitud}"/>
+                    <h:outputText value="#{actitudController.selected.idActitud}" title="#{b.ViewActitudTitle_idActitud}"/>
+                    <h:outputText value="#{b.ViewActitudLabel_valor}"/>
+                    <h:outputText value="#{actitudController.selected.valor}" title="#{b.ViewActitudTitle_valor}"/>
+                    <h:outputText value="#{b.ViewActitudLabel_observacion}"/>
+                    <h:outputText value="#{actitudController.selected.observacion}" title="#{b.ViewActitudTitle_observacion}"/>
+                    <h:outputText value="#{b.ViewActitudLabel_idConstantesFisiologicas}"/>
+                    <h:outputText value="#{actitudController.selected.idConstantesFisiologicas}" title="#{b.ViewActitudTitle_idConstantesFisiologicas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actitudController.destroyAndView}" value="#{b.ViewActitudDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewActitudEditLink}"/>
+                <br />
+                <h:commandLink action="#{actitudController.prepareCreate}" value="#{b.ViewActitudCreateLink}" />
+                <br />
+                <h:commandLink action="#{actitudController.prepareList}" value="#{b.ViewActitudShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewActitudIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

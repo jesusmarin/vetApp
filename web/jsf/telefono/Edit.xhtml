@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditTelefonoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditTelefonoLabel_idTelefono}" for="idTelefono" />
+                    <h:inputText id="idTelefono" value="#{telefonoController.selected.idTelefono}" title="#{b.EditTelefonoTitle_idTelefono}" required="true" requiredMessage="#{b.EditTelefonoRequiredMessage_idTelefono}"/>
+                    <h:outputLabel value="#{b.EditTelefonoLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{telefonoController.selected.numero}" title="#{b.EditTelefonoTitle_numero}" />
+                    <h:outputLabel value="#{b.EditTelefonoLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{telefonoController.selected.idUsuario}" title="#{b.EditTelefonoTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.EditTelefonoLabel_idTipoTelefono}" for="idTipoTelefono" />
+                    <h:selectOneMenu id="idTipoTelefono" value="#{telefonoController.selected.idTipoTelefono}" title="#{b.EditTelefonoTitle_idTipoTelefono}" >
+                        <f:selectItems value="#{tipoTelefonoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{telefonoController.update}" value="#{b.EditTelefonoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditTelefonoViewLink}"/>
+                <br />
+                <h:commandLink action="#{telefonoController.prepareList}" value="#{b.EditTelefonoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditTelefonoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

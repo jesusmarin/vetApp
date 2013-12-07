@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewTipoVacunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewTipoVacunaLabel_idTipoVacuna}"/>
+                    <h:outputText value="#{tipoVacunaController.selected.idTipoVacuna}" title="#{b.ViewTipoVacunaTitle_idTipoVacuna}"/>
+                    <h:outputText value="#{b.ViewTipoVacunaLabel_nombre}"/>
+                    <h:outputText value="#{tipoVacunaController.selected.nombre}" title="#{b.ViewTipoVacunaTitle_nombre}"/>
+                    <h:outputText value="#{b.ViewTipoVacunaLabel_idEspecie}"/>
+                    <h:outputText value="#{tipoVacunaController.selected.idEspecie}" title="#{b.ViewTipoVacunaTitle_idEspecie}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoVacunaController.destroyAndView}" value="#{b.ViewTipoVacunaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewTipoVacunaEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoVacunaController.prepareCreate}" value="#{b.ViewTipoVacunaCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoVacunaController.prepareList}" value="#{b.ViewTipoVacunaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewTipoVacunaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

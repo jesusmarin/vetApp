@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ListReporteProblemasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{b.ListReporteProblemasEmpty}" rendered="#{reporteProblemasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{reporteProblemasController.items.rowCount > 0}">
+                    <h:outputText value="#{reporteProblemasController.pagination.pageFirstItem + 1}..#{reporteProblemasController.pagination.pageLastItem + 1}/#{reporteProblemasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{reporteProblemasController.previous}" value="#{b.Previous} #{reporteProblemasController.pagination.pageSize}" rendered="#{reporteProblemasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{reporteProblemasController.next}" value="#{b.Next} #{reporteProblemasController.pagination.pageSize}" rendered="#{reporteProblemasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{reporteProblemasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListReporteProblemasTitle_idReporteProblemas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idReporteProblemas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListReporteProblemasTitle_problema}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.problema}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListReporteProblemasTitle_planDiagnostico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.planDiagnostico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListReporteProblemasTitle_resultado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resultado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{b.ListReporteProblemasTitle_idHistoriaClinica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHistoriaClinica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{reporteProblemasController.prepareView}" value="#{b.ListReporteProblemasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reporteProblemasController.prepareEdit}" value="#{b.ListReporteProblemasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reporteProblemasController.destroy}" value="#{b.ListReporteProblemasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{reporteProblemasController.prepareCreate}" value="#{b.ListReporteProblemasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ListReporteProblemasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

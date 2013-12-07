@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.EditMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.EditMascotaLabel_idMascota}" for="idMascota" />
+                    <h:inputText id="idMascota" value="#{mascotaController.selected.idMascota}" title="#{b.EditMascotaTitle_idMascota}" required="true" requiredMessage="#{b.EditMascotaRequiredMessage_idMascota}"/>
+                    <h:outputLabel value="#{b.EditMascotaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{mascotaController.selected.fechaNacimiento}" title="#{b.EditMascotaTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{b.EditMascotaLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{mascotaController.selected.peso}" title="#{b.EditMascotaTitle_peso}" />
+                    <h:outputLabel value="#{b.EditMascotaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{b.EditMascotaTitle_nombre}" />
+                    <h:outputLabel value="#{b.EditMascotaLabel_sexo}" for="sexo" />
+                    <h:inputText id="sexo" value="#{mascotaController.selected.sexo}" title="#{b.EditMascotaTitle_sexo}" />
+                    <h:outputLabel value="#{b.EditMascotaLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{mascotaController.selected.color}" title="#{b.EditMascotaTitle_color}" />
+                    <h:outputLabel value="#{b.EditMascotaLabel_caracteristicas}" for="caracteristicas" />
+                    <h:inputText id="caracteristicas" value="#{mascotaController.selected.caracteristicas}" title="#{b.EditMascotaTitle_caracteristicas}" />
+                    <h:outputLabel value="#{b.EditMascotaLabel_idTipoProcedencia}" for="idTipoProcedencia" />
+                    <h:selectOneMenu id="idTipoProcedencia" value="#{mascotaController.selected.idTipoProcedencia}" title="#{b.EditMascotaTitle_idTipoProcedencia}" >
+                        <f:selectItems value="#{tipoProcedenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.EditMascotaLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{mascotaController.selected.idUsuario}" title="#{b.EditMascotaTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{b.EditMascotaLabel_idRaza}" for="idRaza" />
+                    <h:selectOneMenu id="idRaza" value="#{mascotaController.selected.idRaza}" title="#{b.EditMascotaTitle_idRaza}" >
+                        <f:selectItems value="#{razaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{mascotaController.update}" value="#{b.EditMascotaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{b.EditMascotaViewLink}"/>
+                <br />
+                <h:commandLink action="#{mascotaController.prepareList}" value="#{b.EditMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.EditMascotaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

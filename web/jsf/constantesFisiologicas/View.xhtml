@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewConstantesFisiologicasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_idConstantesFisiologicas}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.idConstantesFisiologicas}" title="#{b.ViewConstantesFisiologicasTitle_idConstantesFisiologicas}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_peso}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.peso}" title="#{b.ViewConstantesFisiologicasTitle_peso}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_temperatura}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.temperatura}" title="#{b.ViewConstantesFisiologicasTitle_temperatura}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_turgenciaPiel}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.turgenciaPiel}" title="#{b.ViewConstantesFisiologicasTitle_turgenciaPiel}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_pulso}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.pulso}" title="#{b.ViewConstantesFisiologicasTitle_pulso}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_frecuenciaCardicaco}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.frecuenciaCardicaco}" title="#{b.ViewConstantesFisiologicasTitle_frecuenciaCardicaco}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_frecuenciaRes}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.frecuenciaRes}" title="#{b.ViewConstantesFisiologicasTitle_frecuenciaRes}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_tllc}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.tllc}" title="#{b.ViewConstantesFisiologicasTitle_tllc}"/>
+                    <h:outputText value="#{b.ViewConstantesFisiologicasLabel_idCita}"/>
+                    <h:outputText value="#{constantesFisiologicasController.selected.idCita}" title="#{b.ViewConstantesFisiologicasTitle_idCita}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.destroyAndView}" value="#{b.ViewConstantesFisiologicasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewConstantesFisiologicasEditLink}"/>
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.prepareCreate}" value="#{b.ViewConstantesFisiologicasCreateLink}" />
+                <br />
+                <h:commandLink action="#{constantesFisiologicasController.prepareList}" value="#{b.ViewConstantesFisiologicasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewConstantesFisiologicasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

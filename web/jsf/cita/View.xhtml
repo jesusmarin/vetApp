@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewCitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewCitaLabel_idCita}"/>
+                    <h:outputText value="#{citaController.selected.idCita}" title="#{b.ViewCitaTitle_idCita}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_fechaEntrada}"/>
+                    <h:outputText value="#{citaController.selected.fechaEntrada}" title="#{b.ViewCitaTitle_fechaEntrada}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{b.ViewCitaLabel_anotacion}"/>
+                    <h:outputText value="#{citaController.selected.anotacion}" title="#{b.ViewCitaTitle_anotacion}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_fechaSalida}"/>
+                    <h:outputText value="#{citaController.selected.fechaSalida}" title="#{b.ViewCitaTitle_fechaSalida}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{b.ViewCitaLabel_diagnosticoPresuntivo}"/>
+                    <h:outputText value="#{citaController.selected.diagnosticoPresuntivo}" title="#{b.ViewCitaTitle_diagnosticoPresuntivo}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_diagnosticoDefinitivo}"/>
+                    <h:outputText value="#{citaController.selected.diagnosticoDefinitivo}" title="#{b.ViewCitaTitle_diagnosticoDefinitivo}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_tratamiento}"/>
+                    <h:outputText value="#{citaController.selected.tratamiento}" title="#{b.ViewCitaTitle_tratamiento}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_pronostico}"/>
+                    <h:outputText value="#{citaController.selected.pronostico}" title="#{b.ViewCitaTitle_pronostico}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_idMascota}"/>
+                    <h:outputText value="#{citaController.selected.idMascota}" title="#{b.ViewCitaTitle_idMascota}"/>
+                    <h:outputText value="#{b.ViewCitaLabel_idTipoServicio}"/>
+                    <h:outputText value="#{citaController.selected.idTipoServicio}" title="#{b.ViewCitaTitle_idTipoServicio}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{citaController.destroyAndView}" value="#{b.ViewCitaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewCitaEditLink}"/>
+                <br />
+                <h:commandLink action="#{citaController.prepareCreate}" value="#{b.ViewCitaCreateLink}" />
+                <br />
+                <h:commandLink action="#{citaController.prepareList}" value="#{b.ViewCitaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewCitaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

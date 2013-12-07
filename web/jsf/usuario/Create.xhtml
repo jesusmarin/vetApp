@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_idUsuario}" for="idUsuario" />
+                    <h:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" title="#{b.CreateUsuarioTitle_idUsuario}" required="true" requiredMessage="#{b.CreateUsuarioRequiredMessage_idUsuario}"/>
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{usuarioController.selected.nombres}" title="#{b.CreateUsuarioTitle_nombres}" />
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{usuarioController.selected.apellidos}" title="#{b.CreateUsuarioTitle_apellidos}" />
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{usuarioController.selected.email}" title="#{b.CreateUsuarioTitle_email}" />
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{usuarioController.selected.direccion}" title="#{b.CreateUsuarioTitle_direccion}" />
+                    <h:outputLabel value="#{b.CreateUsuarioLabel_idCiudad}" for="idCiudad" />
+                    <h:selectOneMenu id="idCiudad" value="#{usuarioController.selected.idCiudad}" title="#{b.CreateUsuarioTitle_idCiudad}" >
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioController.create}" value="#{b.CreateUsuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{b.CreateUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateUsuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

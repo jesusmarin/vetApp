@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.ViewMusculoEsqueleticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{b.ViewMusculoEsqueleticoLabel_idMusculoEsqueletico}"/>
+                    <h:outputText value="#{musculoEsqueleticoController.selected.idMusculoEsqueletico}" title="#{b.ViewMusculoEsqueleticoTitle_idMusculoEsqueletico}"/>
+                    <h:outputText value="#{b.ViewMusculoEsqueleticoLabel_valor}"/>
+                    <h:outputText value="#{musculoEsqueleticoController.selected.valor}" title="#{b.ViewMusculoEsqueleticoTitle_valor}"/>
+                    <h:outputText value="#{b.ViewMusculoEsqueleticoLabel_observacion}"/>
+                    <h:outputText value="#{musculoEsqueleticoController.selected.observacion}" title="#{b.ViewMusculoEsqueleticoTitle_observacion}"/>
+                    <h:outputText value="#{b.ViewMusculoEsqueleticoLabel_idConstantesFisiologicas}"/>
+                    <h:outputText value="#{musculoEsqueleticoController.selected.idConstantesFisiologicas}" title="#{b.ViewMusculoEsqueleticoTitle_idConstantesFisiologicas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{musculoEsqueleticoController.destroyAndView}" value="#{b.ViewMusculoEsqueleticoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{b.ViewMusculoEsqueleticoEditLink}"/>
+                <br />
+                <h:commandLink action="#{musculoEsqueleticoController.prepareCreate}" value="#{b.ViewMusculoEsqueleticoCreateLink}" />
+                <br />
+                <h:commandLink action="#{musculoEsqueleticoController.prepareList}" value="#{b.ViewMusculoEsqueleticoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.ViewMusculoEsqueleticoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

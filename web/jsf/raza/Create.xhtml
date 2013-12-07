@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{b.CreateRazaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{b.CreateRazaLabel_idRaza}" for="idRaza" />
+                    <h:inputText id="idRaza" value="#{razaController.selected.idRaza}" title="#{b.CreateRazaTitle_idRaza}" required="true" requiredMessage="#{b.CreateRazaRequiredMessage_idRaza}"/>
+                    <h:outputLabel value="#{b.CreateRazaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{razaController.selected.nombre}" title="#{b.CreateRazaTitle_nombre}" />
+                    <h:outputLabel value="#{b.CreateRazaLabel_idEspecie}" for="idEspecie" />
+                    <h:selectOneMenu id="idEspecie" value="#{razaController.selected.idEspecie}" title="#{b.CreateRazaTitle_idEspecie}" >
+                        <f:selectItems value="#{especieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{razaController.create}" value="#{b.CreateRazaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{razaController.prepareList}" value="#{b.CreateRazaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{b.CreateRazaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
