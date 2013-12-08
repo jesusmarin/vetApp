@@ -14,12 +14,8 @@
                 <h:commandButton action="#{gestorUsuariosBean.buscarUsuario()}" value="Buscar"/>
             </h:form>
             <br/>
-
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" />
-            </h:panelGroup>
-
-            <h:panelGroup rendered="#{gestorUsuariosBean.elDiv==2}">
+               #{gestorUsuariosBean.usuario.toString()}<br/>
+            <h:panelGroup rendered="#{gestorUsuariosBean.elDiv == 2}">
                 <div>
                     <h:form>                   
                         <h1><h:outputText value="Agregue el Nuevo Usuario"/></h1>
@@ -27,7 +23,7 @@
                             <h:outputLabel  value="IdUsuario:" for="idUsuario" />
                             <h:inputText disabled="true" id="idUsuario" value="#{gestorUsuariosBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
                             <h:outputLabel value="Documento de Identidad:" for="docId" />
-                            <h:inputText id="docId" value="#{gestorUsuariosBean.usuario.docId}" title="DocId" />
+                            <h:inputText disabled="true" id="docId" value="#{gestorUsuariosBean.usuario.docId}" title="DocId" />
                             <h:outputLabel value="Nombres:" for="nombres" />
                             <h:inputText size="60" id="nombres" value="#{gestorUsuariosBean.usuario.nombres}" title="Nombres" />
                             <h:outputLabel value="Apellidos:" for="apellidos" />
@@ -41,6 +37,11 @@
                                 <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
+                        <div id="boton">
+                            <h:commandLink value="Guardar" action="#{gestorUsuariosBean.guardarUsuario()}">
+                                
+                            </h:commandLink>
+                        </div>
                     </h:form>
                 </div>
             </h:panelGroup>
@@ -61,7 +62,7 @@
                             <h:outputText value="Direccion:"/>
                             <h:outputText value="#{gestorUsuariosBean.usuario.direccion}" title="Direccion"/>
                             <h:outputText value="IdCiudad:"/>
-                            <h:outputText value="#{gestorUsuariosBean.usuario.idCiudad}" title="IdCiudad"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.idCiudad.nombre}" title="IdCiudad"/>
                             <h:outputText value="DocId:"/>
                             <h:outputText value="#{gestorUsuariosBean.usuario.docId}" title="DocId"/>
                         </h:panelGrid>

@@ -5,6 +5,7 @@ import com.marin.vet.entidad.Telefono;
 import com.marin.vet.entidad.Usuario;
 import com.marin.vet.facade.TelefonoFacade;
 import com.marin.vet.facade.UsuarioFacade;
+import com.marin.vet.util.ControlLetras;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -39,7 +40,9 @@ public class gestorUsuarios implements Serializable {
             JsfUtil.addSuccessMessage("Consultó a la base de datos");
             if (usuario == null) {
                 elDiv = 2;// si el suaurio existe es 2
-                iniciarUsuario();                
+                iniciarUsuario();
+            }else{
+                elDiv = 1;
             }
         } catch (Exception e) {
             elDiv = 1;// si el suaurio existe es 1
@@ -51,12 +54,35 @@ public class gestorUsuarios implements Serializable {
     }
 
     private void iniciarUsuario() {
+         ControlLetras cl = new ControlLetras();  
         usuario = new Usuario();
         usuario.setApellidos("apellido");
         usuario.setNombres("Nombre");
         usuario.setIdUsuario(-1);
         usuario.setEmail("mail@host.com");
-        usuario.setDocId("123");
+        docId = cl.quitaEspaciosPuntosComas(docId);
+        usuario.setDocId(docId);
+    }
+
+    public String guardarUsuario() {
+        elDiv = 1;
+        usuario=verifiqueLetras();
+        try {
+            getUsuarioEjb().create(usuario);
+             JsfUtil.addSuccessMessage("Usuario se guardo corectamente");
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage("Error al guardar usuario");
+        }
+        return "usuarios";
+    }
+    
+
+    private Usuario verifiqueLetras() {
+        ControlLetras cl = new ControlLetras();        
+        usuario.setApellidos(cl.pasaMayuscula(usuario.getApellidos()));
+        usuario.setNombres(cl.pasaMayuscula(usuario.getNombres()));
+        usuario.setDocId(cl.quitaEspaciosPuntosComas(docId));
+        return usuario;
     }
 
     public UsuarioFacade getUsuarioEjb() {

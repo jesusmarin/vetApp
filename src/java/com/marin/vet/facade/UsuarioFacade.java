@@ -70,7 +70,7 @@ public class UsuarioFacade implements Serializable {
             CriteriaQuery<Usuario> consulta = cb.createQuery(Usuario.class);
             Root<Usuario> usuario = consulta.from(Usuario.class);
             consulta.select(usuario)
-                    .where(cb.equal(usuario.get("docIdentidad"), docId));
+                    .where(cb.equal(usuario.get("docId"), docId));
             Query q = getEntityManager().createQuery(consulta);
             return (Usuario) q.getSingleResult();
         } catch (Exception e) {
