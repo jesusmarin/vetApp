@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/jsfcrud.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div id="contenido">
+            <div id="top">
+                <div id="cabecera">
+                    <ui:insert name="top">
+                        <div>
+                            <div style="float: left">
+                                <span style="margin-left: 45px;">App Veterinaria</span>
+                            </div>
+                            <div style="float: right">
+                                <h:commandLink>
+                                    <h:graphicImage name="inicio.png" library="images"  width="35" height="35"/>
+                                </h:commandLink>
+                                <h:commandLink>
+                                    <h:graphicImage name="c.png" library="images"  width="35" height="35"/>
+                                </h:commandLink>
+                                <h:commandLink>
+                                    <h:graphicImage name="h.png" library="images"  width="35" height="35"/>
+                                </h:commandLink>
+                                <h:commandLink>
+                                    <h:graphicImage name="r.png" library="images"  width="35" height="35"/>
+                                </h:commandLink>
+                                <h:commandLink>
+                                    <h:graphicImage name="u.png" library="images"  width="35" height="35"/>
+                                </h:commandLink>
+                            </div>
+                        </div>
+                        <div class="clear"/>
+                    </ui:insert>
+                </div>
+            </div>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    <div>
+                        <h:graphicImage name="base.png" library="images"/>
+                    </div>
+
+                    <div id="pie"><br/>
+                        <h:form>
+                            <div>
+                                <div style="float: left; width: 600px">
+                                    www.mismascotas.com - 3144109539  - Florencia Caquet&aacute; &nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div style="float: left">
+                                    <a target="_blank" href="https://www.facebook.com/jesusmarin48">
+                                        <h:graphicImage name="facebook.png" library="images" width="35" height="35"/>
+                                    </a>
+                                    <h:commandLink>
+                                        <h:graphicImage name="twitter.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink >
+                                        <h:graphicImage name="skipe.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <h:graphicImage name="youtube.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                </div>
+                            </div>
+                            <div class="clear"/>
+                        </h:form>
+                    </div>
+
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>
