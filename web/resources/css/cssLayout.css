@@ -8,10 +8,11 @@
 }
 
 #bottom {
-    position: relative;
-    background-color: #c2dfef;
+    background-color: #fff;
+   /* position: relative;
+    
     padding: 5px;
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;*/
 }
 
 #left {
@@ -30,7 +31,7 @@
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+    /*background-color: #dddddd;*/
     padding: 5px;
 }
 

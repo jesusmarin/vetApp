@@ -104,7 +104,7 @@ tr.jsfcrud_even_row {
 
 #cuerpo{
     padding: 20px;
-    height: 468px;
+    height: 400px;
     color:#78666B;
 }
 
@@ -145,4 +145,7 @@ tr.jsfcrud_even_row {
 #boton:hover{
     background-color:#637DA9;
     color: #BBC6D9;
+}
+img{
+    margin-left: 5px;
 }

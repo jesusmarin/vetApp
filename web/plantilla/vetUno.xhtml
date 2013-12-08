@@ -22,21 +22,23 @@
                                 <span style="margin-left: 45px;">App Veterinaria</span>
                             </div>
                             <div style="float: right">
-                                <h:commandLink>
-                                    <h:graphicImage name="inicio.png" library="images"  width="35" height="35"/>
-                                </h:commandLink>
-                                <h:commandLink>
-                                    <h:graphicImage name="c.png" library="images"  width="35" height="35"/>
-                                </h:commandLink>
-                                <h:commandLink>
-                                    <h:graphicImage name="h.png" library="images"  width="35" height="35"/>
-                                </h:commandLink>
-                                <h:commandLink>
-                                    <h:graphicImage name="r.png" library="images"  width="35" height="35"/>
-                                </h:commandLink>
-                                <h:commandLink>
-                                    <h:graphicImage name="u.png" library="images"  width="35" height="35"/>
-                                </h:commandLink>
+                                <h:form>
+                                    <h:commandLink>
+                                        <h:graphicImage value="inicio" name="inicio.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <h:graphicImage value="citas" name="c.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <h:graphicImage value="historias" name="h.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <h:graphicImage value="resultados" name="r.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <h:graphicImage value="usuarios" name="u.png" library="images"  width="35" height="35"/>
+                                    </h:commandLink>
+                                </h:form>
                             </div>
                         </div>
                         <div class="clear"/>
@@ -50,33 +52,34 @@
 
             <div id="bottom">
                 <ui:insert name="bottom">
-                    <div>
+                    <div style="width:  780px; text-align:  center; ">
                         <h:graphicImage name="base.png" library="images"/>
                     </div>
 
                     <div id="pie"><br/>
-                        <h:form>
-                            <div>
-                                <div style="float: left; width: 600px">
-                                    www.mismascotas.com - 3144109539  - Florencia Caquet&aacute; &nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
-                                <div style="float: left">
-                                    <a target="_blank" href="https://www.facebook.com/jesusmarin48">
-                                        <h:graphicImage name="facebook.png" library="images" width="35" height="35"/>
-                                    </a>
-                                    <h:commandLink>
-                                        <h:graphicImage name="twitter.png" library="images"  width="35" height="35"/>
-                                    </h:commandLink>
-                                    <h:commandLink >
-                                        <h:graphicImage name="skipe.png" library="images"  width="35" height="35"/>
-                                    </h:commandLink>
-                                    <h:commandLink>
-                                        <h:graphicImage name="youtube.png" library="images"  width="35" height="35"/>
-                                    </h:commandLink>
-                                </div>
+
+                        <div>
+                            <div style="float: left; width: 600px">
+                                www.mismascotas.com - 3144109539  - Florencia Caquet&aacute; &nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
-                            <div class="clear"/>
-                        </h:form>
+                            <div style="float: left">
+                                <a target="_blank" href="https://www.facebook.com/jesusmarin48">
+                                    <h:graphicImage name="facebook.png" library="images" width="35" height="35"/>
+                                </a>
+                                <a>
+                                    <h:graphicImage name="twitter.png" library="images"  width="35" height="35"/>
+                                </a>
+                                <a >
+                                    <h:graphicImage name="skipe.png" library="images"  width="35" height="35"/>
+                                </a>
+                                <a>
+                                    <h:graphicImage name="youtube.png" library="images"  width="35" height="35"/>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="clear"/>
+
                     </div>
 
                 </ui:insert>
