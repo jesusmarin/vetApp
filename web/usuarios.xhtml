@@ -1,14 +1,77 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="./plantilla/vetUno.xhtml">
+                template="./plantilla/vetUno.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
-   
+
     <ui:define name="content">
-         <div id="cuerpo">
-           usuarios
+        <div id="cuerpo">
+            <h:form>
+                <h:outputLabel  value="Ingrese Documento de Identidad:"/>
+                <h:inputText value="#{gestorUsuariosBean.docId}"/>
+                <h:commandButton action="#{gestorUsuariosBean.buscarUsuario()}" value="Buscar"/>
+            </h:form>
+            <br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" />
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{gestorUsuariosBean.elDiv==2}">
+                <div>
+                    <h:form>                   
+                        <h1><h:outputText value="Agregue el Nuevo Usuario"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel  value="IdUsuario:" for="idUsuario" />
+                            <h:inputText disabled="true" id="idUsuario" value="#{gestorUsuariosBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                            <h:outputLabel value="Documento de Identidad:" for="docId" />
+                            <h:inputText id="docId" value="#{gestorUsuariosBean.usuario.docId}" title="DocId" />
+                            <h:outputLabel value="Nombres:" for="nombres" />
+                            <h:inputText size="60" id="nombres" value="#{gestorUsuariosBean.usuario.nombres}" title="Nombres" />
+                            <h:outputLabel value="Apellidos:" for="apellidos" />
+                            <h:inputText size="60" id="apellidos" value="#{gestorUsuariosBean.usuario.apellidos}" title="Apellidos" />
+                            <h:outputLabel value="Email:" for="email" />
+                            <h:inputText size="40" id="email" value="#{gestorUsuariosBean.usuario.email}" title="Email" />
+                            <h:outputLabel value="Direccion:" for="direccion" />
+                            <h:inputText size="80" id="direccion" value="#{gestorUsuariosBean.usuario.direccion}" title="Direccion" />
+                            <h:outputLabel value="IdCiudad:" for="idCiudad" />
+                            <h:selectOneMenu id="idCiudad" value="#{gestorUsuariosBean.usuario.idCiudad}" title="IdCiudad" >
+                                <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{gestorUsuariosBean.elDiv == 1}">
+                <div>
+
+                    <h:form>
+                        <h1><h:outputText value="Datos de Usuario"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="IdUsuario:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.idUsuario}" title="IdUsuario"/>
+                            <h:outputText value="Nombres:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.nombres}" title="Nombres"/>
+                            <h:outputText value="Apellidos:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.apellidos}" title="Apellidos"/>
+                            <h:outputText value="Email:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.email}" title="Email"/>
+                            <h:outputText value="Direccion:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.direccion}" title="Direccion"/>
+                            <h:outputText value="IdCiudad:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.idCiudad}" title="IdCiudad"/>
+                            <h:outputText value="DocId:"/>
+                            <h:outputText value="#{gestorUsuariosBean.usuario.docId}" title="DocId"/>
+                        </h:panelGrid>
+                    </h:form>
+
+
+                </div>
+            </h:panelGroup>
         </div>
     </ui:define>
 
-   
+
 </ui:composition>

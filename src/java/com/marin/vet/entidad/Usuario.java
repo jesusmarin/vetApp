@@ -48,6 +48,8 @@ public class Usuario implements Serializable {
     @Size(max = 45)
     @Column(name = "email")
     private String email;
+    @Column(name = "docId")
+    private String docId;
     @Size(max = 245)
     @Column(name = "direccion")
     private String direccion;
@@ -130,6 +132,15 @@ public class Usuario implements Serializable {
         this.mascotaList = mascotaList;
     }
 
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -152,7 +163,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.marin.vet.entidad.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "" + apellidos + " "+nombres;
     }
     
 }
