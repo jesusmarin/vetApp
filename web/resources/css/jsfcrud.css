@@ -5,12 +5,16 @@ root {
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #3a4f54;
-    background-color: #dfecf1;
-    font-size: small;
+    background-color:darkgray;
+    font-size: small;    
 }
 
 a {
-    color: #e33b06;
+    color: #464C48;
+    text-decoration: none;    
+}
+a:hover{
+    color:#BBC6D9;
 }
 
 table {
@@ -79,4 +83,64 @@ tr.jsfcrud_even_row {
     position: absolute;
     left: 50%;
     top: 50%;
+}
+#contenido{
+    background-color: #ffffff;    
+    width: 800px;
+    margin: 0 auto;
+    height: 580px;
+    margin-top: -10px;
+}
+#cabecera{
+    background-color: #030303;
+    color:darkgray;        
+    font-size: 18px;
+    font-style: initial;
+    font-weight: bold;
+    padding: 8px;    
+}
+
+#cuerpo{
+    padding: 20px;
+    height: 468px;
+    color:#78666B;
+}
+
+#cuerpoIzq{
+    float: left;
+    padding: 35px;
+    width: 380px;
+    height: 428px;
+    
+}
+#cuerpoDer{
+    padding-top: 200px;
+    float: left;
+     width:180px;
+}
+.clear{
+    clear: both;
+}
+
+#pie{
+    background-color: #B0A6AF;
+    color:#78666B;        
+    font-size: 14px;
+    /*font-style: initial;*/
+    font-weight: bold;
+    padding: 8px;
+    /*text-align:  center;*/
+    /*width: 780px;*/
+  
+}
+#boton{
+    background-color:#9DA39F;
+    color: #464C48;
+    padding: 12px;
+    width: 105px;
+    margin-top: 10px;
+}
+#boton:hover{
+    background-color:#637DA9;
+    color: #BBC6D9;
 }

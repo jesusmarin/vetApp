@@ -3,10 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>App Vet</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        hola veterinaria <br/><a href="index.xhtml">index</a>
+        <div id="contenido">
+            <div id="cabecera">
+                <span style="margin-left: 45px;">App Veterinaria</span>
+            </div>
+            <h:form>
+                <div id="cuerpo">
+                    <div>
+                        <div id="cuerpoIzq">
+                            <h:graphicImage name="logo.png" library="images"/>
+                            <br/><a href="index.xhtml">index</a>                    
+                        </div>
+
+                        <div id="cuerpoDer">
+                            <div id="boton">
+                                <h:commandLink value="Citas"/>
+                            </div>
+                            <div id="boton">
+                                <h:commandLink value="Historia Cl&iacute;nica"/>
+                            </div>
+                            <div id="boton">
+                                <h:commandLink value="Resultados"/>
+                            </div>
+                            <div id="boton">
+                                <h:commandLink value="Usuarios"/>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="clear"/>
+                </div>
+            </h:form>
+            <div id="pie">
+                www.mismascotas.com - 3144109539  - Florencia Caquet&aacute;
+            </div>
+        </div>
+
     </h:body>
 </html>
 
