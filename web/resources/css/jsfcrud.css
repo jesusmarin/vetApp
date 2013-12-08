@@ -10,8 +10,10 @@ body {
 }
 
 a {
-    color: #464C48;
-    text-decoration: none;    
+    color:#4e6a71;
+    text-decoration: none; 
+    font-weight:bold;
+    font-size: 16px;
 }
 a:hover{
     color:#BBC6D9;
@@ -111,12 +113,12 @@ tr.jsfcrud_even_row {
     padding: 35px;
     width: 380px;
     height: 428px;
-    
+
 }
 #cuerpoDer{
     padding-top: 200px;
     float: left;
-     width:180px;
+    width:180px;
 }
 .clear{
     clear: both;
@@ -128,16 +130,16 @@ tr.jsfcrud_even_row {
     font-size: 14px;
     /*font-style: initial;*/
     font-weight: bold;
-    padding: 8px;
-    /*text-align:  center;*/
+    padding: 2px;
+    text-align:  center;
     /*width: 780px;*/
-  
+
 }
 #boton{
     background-color:#9DA39F;
     color: #464C48;
     padding: 12px;
-    width: 105px;
+    width: 125px;
     margin-top: 10px;
 }
 #boton:hover{
