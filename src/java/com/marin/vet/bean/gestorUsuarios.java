@@ -10,7 +10,6 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import org.jboss.weld.logging.messages.JsfMessage;
 
 /**
  *
